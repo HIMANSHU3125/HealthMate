@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "222915957182",
+    "project_id": "doctor-add90",
+    "storage_bucket": "doctor-add90.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222915957182:android:4a014cf97b7c9f1dcea9ef",
+        "android_client_info": {
+          "package_name": "com.example.loginscreen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_PHFD6cAddpIMqQujrftRLngXg1Trmcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
