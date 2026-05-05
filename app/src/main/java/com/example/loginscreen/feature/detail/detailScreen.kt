@@ -24,6 +24,7 @@ fun DetailScreen(
     onDial: (mobile: String) -> Unit,
     onDirection: (locationUrl: String) -> Unit,
     onShare: (subject: String, text: String) -> Unit,
+    onBookAppointment: (String, String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -48,7 +49,8 @@ fun DetailScreen(
                     onSendSms=onSendSms,
                     onDial=onDial,
                     onDirection=onDirection,
-                    onShare=onShare
+                    onShare=onShare,
+                    onBookAppointment=onBookAppointment
 
                 )
 

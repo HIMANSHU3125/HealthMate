@@ -1,6 +1,5 @@
 package com.example.loginscreen.feature.TopDoctors
 
-import android.text.Layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +28,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -148,7 +146,7 @@ fun DoctorRowCardPreview() {
         Mobile = "9876543210",
         Patiens = "500+",
         Picture = "",
-        Rating = 4.5f,
+        Rating = 4.5,
         Site = "www.doctor.com",
         Special = "Cardiologist",
         Biography = "Experienced heart specialist",

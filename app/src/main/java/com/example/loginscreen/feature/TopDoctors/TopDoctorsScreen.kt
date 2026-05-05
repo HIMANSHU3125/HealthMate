@@ -1,6 +1,5 @@
 package com.example.loginscreen.feature.TopDoctors
 
-import android.telephony.ims.SipDetails
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -115,7 +114,7 @@ fun TopDoctorScreenPreview() {
             Mobile = "9876543210",
             Patiens = "500+",
             Picture = "",
-            Rating = 4.5f,
+            Rating = 4.5,
             Site = "www.doctor.com",
             Special = "Cardiologist",
             Biography = "Heart specialist",
@@ -129,7 +128,7 @@ fun TopDoctorScreenPreview() {
             Mobile = "9123456780",
             Patiens = "300+",
             Picture = "",
-            Rating = 4.0f,
+            Rating = 4.0,
             Site = "www.doctor2.com",
             Special = "Dentist",
             Biography = "Dental expert",

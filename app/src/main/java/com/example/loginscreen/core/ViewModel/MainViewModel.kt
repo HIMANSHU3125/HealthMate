@@ -3,16 +3,14 @@ package com.example.loginscreen.core.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.loginscreen.core.model.CategoryModel
 import com.example.loginscreen.core.model.DoctorModel
-
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.loginscreen.data.repository.DoctorRepository
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-    private val db = FirebaseDatabase.getInstance()
+    private val doctorRepository = DoctorRepository()
 
     private val _category = MutableLiveData<List<CategoryModel>>(emptyList())
     val category: LiveData<List<CategoryModel>> = _category
@@ -28,47 +26,31 @@ class MainViewModel : ViewModel() {
 
     fun loadCategory(force: Boolean = false) {
         if (categoryLoaded && !force) return
-
         categoryLoaded = true
 
-        val ref = db.getReference("Category")
-
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val items = mutableListOf<CategoryModel>()
-                for (child in snapshot.children) {
-                    child.getValue(CategoryModel::class.java)?.let { items.add(it) }
-                }
-                _category.value = items
-            }
-
-            override fun onCancelled(error: DatabaseError) {
+        viewModelScope.launch {
+            val result = doctorRepository.getCategories()
+            if (result.isSuccess) {
+                _category.value = result.getOrNull() ?: emptyList()
+            } else {
                 categoryLoaded = false
-                _error.value = error.message
+                _error.value = result.exceptionOrNull()?.message
             }
-        })
+        }
     }
 
     fun loadDoctors(force: Boolean = false) {
         if (doctorsLoaded && !force) return
-
         doctorsLoaded = true
 
-        val ref = db.getReference("Doctors")
-
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val items = mutableListOf<DoctorModel>()
-                for (child in snapshot.children) {
-                    child.getValue(DoctorModel::class.java)?.let { items.add(it) }
-                }
-                _doctors.value = items
-            }
-
-            override fun onCancelled(error: DatabaseError) {
+        viewModelScope.launch {
+            val result = doctorRepository.getDoctors()
+            if (result.isSuccess) {
+                _doctors.value = result.getOrNull() ?: emptyList()
+            } else {
                 doctorsLoaded = false
-                _error.value = error.message
+                _error.value = result.exceptionOrNull()?.message
             }
-        })
+        }
     }
 }

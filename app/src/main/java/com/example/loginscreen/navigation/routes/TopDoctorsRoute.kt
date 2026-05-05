@@ -15,7 +15,7 @@ fun NavGraphBuilder.topDoctorsRoute(
     onback:()-> Unit,
     onopenDetail:(DoctorModel)-> Unit
 ){
-    composable (Screen.TopDoctors.route){
+    composable<TopDoctorsRoute> {
         val doctors by vm.doctors.observeAsState(initial=emptyList())
         LaunchedEffect(Unit) {if (doctors.isEmpty()) vm.loadDoctors() }
 

@@ -35,7 +35,8 @@ fun DetailBody(
     onSendSms: (mobile: String, body: String) -> Unit,
     onDial: (mobile: String) -> Unit,
     onDirection: (locationUrl: String) -> Unit,
-    onShare: (subject: String, text: String) -> Unit
+    onShare: (subject: String, text: String) -> Unit,
+    onBookAppointment: (String, String) -> Unit
 ) {
     val darkPurple= colorResource(R.color.darkPurple)
     val gray= colorResource(R.color.gray)
@@ -152,7 +153,7 @@ fun DetailBody(
 
             }
         }
-        Button(onClick = {},
+        Button(onClick = { onBookAppointment(item.Id.toString(), item.Name ?: "") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),

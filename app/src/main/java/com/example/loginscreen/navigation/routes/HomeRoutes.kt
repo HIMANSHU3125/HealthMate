@@ -15,11 +15,10 @@ import com.example.loginscreen.feature.Home.MainScreen
 fun NavGraphBuilder.homeRoute(
     vm: MainViewModel,
     onOpenTopDoctors: () -> Unit,
-    onOpenDoctorDetail:(DoctorModel)-> Unit
-
-
+    onOpenDoctorDetail:(DoctorModel)-> Unit,
+    onLogout: () -> Unit
 ){
-    composable(Screen.Home.route){
+    composable<HomeRoute> {
         val categorie by vm.category.observeAsState(emptyList())
         val doctor by vm.doctors.observeAsState(emptyList())
 
@@ -27,12 +26,11 @@ fun NavGraphBuilder.homeRoute(
             if(categorie.isEmpty()) vm.loadCategory()
             if(doctor.isEmpty()) vm.loadDoctors()
         }
-        MainScreen(viewModel=vm,
+        MainScreen(
+            viewModel=vm,
             onOpenTopDoctors=onOpenTopDoctors,
-        onOpenDoctorDetail=onOpenDoctorDetail
+            onOpenDoctorDetail=onOpenDoctorDetail,
+            onLogout=onLogout
         )
-
-
     }
-
 }

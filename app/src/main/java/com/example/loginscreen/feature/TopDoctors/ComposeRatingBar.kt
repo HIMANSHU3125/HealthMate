@@ -21,7 +21,7 @@ fun ComposeRatingBar(
             RatingBar(
                 context,
                 null,
-                android.R.attr.ratingBarStyleSmall   // ✅ correct style
+                android.R.attr.ratingBarStyleSmall   //
             ).apply {
                 setNumStars(stars)
                 setStepSize(0.5f)

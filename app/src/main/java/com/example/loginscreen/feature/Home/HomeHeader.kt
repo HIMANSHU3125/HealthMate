@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.loginscreen.R
 
 @Composable
-fun HomeHeader(){
+fun HomeHeader(name: String) {
     Row(
         modifier = Modifier.fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, top = 24.dp),
@@ -31,7 +31,7 @@ fun HomeHeader(){
                 .weight(1f)
                 .padding(horizontal = 16.dp)
         ) {
-            Text(text="Hi mohsen jamali",
+            Text(text="Hello, $name",
                 color= Color.Black,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -42,18 +42,14 @@ fun HomeHeader(){
                 color= Color.Black,
                 modifier = Modifier.padding(top=8.dp),
             )
-            Image(painter = painterResource(R.drawable.bell_icon),
-                contentDescription = null,
-                modifier=Modifier.size(42.dp))
-
         }
-
-
+        Image(painter = painterResource(R.drawable.bell_icon),
+            contentDescription = null,
+            modifier=Modifier.size(42.dp))
     }
 }
 @Preview
 @Composable
 fun HomeHeaderPreview(){
-    HomeHeader()
-
+    HomeHeader("John Doe")
 }

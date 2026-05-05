@@ -21,8 +21,7 @@ fun NavGraphBuilder.detailRoute(
     onBack:()->Unit
 
 ){
-    composable (Screen.Detail.route){
-        backStackEntry: NavBackStackEntry->
+    composable<DetailRoute> { backStackEntry ->
         val context= LocalContext.current
         val prevEntry= remember(nav){nav.previousBackStackEntry}
         val doctor=remember (prevEntry){
@@ -71,6 +70,9 @@ fun NavGraphBuilder.detailRoute(
                             "choose one"
                         )
                     )
+                },
+                onBookAppointment = { doctorId, doctorName ->
+                    nav.navigate(com.example.loginscreen.navigation.routes.BookingRoute(doctorId, doctorName))
                 }
 
             )

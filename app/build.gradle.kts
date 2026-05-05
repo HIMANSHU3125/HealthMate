@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -13,7 +14,7 @@ android {
     defaultConfig {
         applicationId = "com.example.loginscreen"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -42,7 +43,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
     implementation(libs.androidx.compose.runtime.livedata)
     testImplementation(libs.junit)
@@ -62,6 +63,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("io.coil-kt:coil-compose:2.7.0")
-    // Jetpack Compose integration
-    implementation("androidx.navigation:navigation-compose:2.9.6")
+    implementation("androidx.navigation:navigation-compose:2.8.9")
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
+    implementation(libs.androidx.work.runtime.ktx)
 }
