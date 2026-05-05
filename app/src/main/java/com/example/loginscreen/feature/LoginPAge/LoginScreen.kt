@@ -73,7 +73,7 @@ fun loginScreen(
         Spacer(modifier = Modifier.height(40.dp))
 
         Image(
-            painter = painterResource(R.drawable.doctorlogin),
+            painter = painterResource(R.drawable.doctor_login),
             contentDescription = null,
             modifier = Modifier.size(160.dp)
         )
